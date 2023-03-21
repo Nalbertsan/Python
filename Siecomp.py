@@ -51,8 +51,44 @@ def transformar(lista):
         listPresenca.append(pessoa.Lista)
     dic["Nome"] = listNome
     dic["Matricula"] = listMatricula
-    dic["Presenca"] = listPresenca
+    dic["Soma"] = somar(listPresenca)
     return dic
+
+def somar(lista):
+    listasoma = []
+    for i in range(len(lista)):
+        soma = 0
+        for list in set(lista[i]):
+            if(list == "INTRODUÇÃO A METODOLOGIA PBL"):
+                soma+=9
+            elif(list == "SELEC * FROM ECOMP"):
+                soma+=2
+            elif(list == "CONHECENDO O RAMO ESTUDANTIL"):
+                soma+=2
+            elif(list == "O INTERCÂMBIO NA UEFS - O PAPEL DA AERI"):
+                soma+=1
+            elif(list == "INTRODUÇÃO AO LABORATÓRIO PARA CIRCUITOS ELÉTRICOS"):
+                soma+=5
+            elif(list == "TRAJETÓRIA DO ENGENHEIRO DE SOFTWARE"):
+                soma+=1
+            elif(list == "PALESTRA SOBRE ENADE"):
+                soma+=1
+            elif(list == "CURRICULARIZAÇÃO DA EXTENSÃO NO CURSO"):
+                soma+=2
+            elif(list == "MATEMÁTICA & PROSA"):
+                soma+=2
+            elif(list == "MATEMÁTICA DISCRETAS E SUAS APLICAÇÕES"):
+                soma+=2
+            elif(list == "ECOMPLICADO FAZER ECOMP?"):
+                soma+=2
+            elif(list == "EXPLICANDO TODAS AS MATÉRIAS DO CURSO"):
+                soma+=2
+        if(soma > 20):
+            soma = 20
+        if(soma == 4):
+            soma = 5
+        listasoma.append(soma)
+    return listasoma
 
 def transformar_Dic_cadaPre(lista, listaApresentacao):
     dic = {}
@@ -73,9 +109,10 @@ def main():
     ##imprimeLista(listapessoas)
     dic = transformar(listapessoas)
     dic2 = transformar_Dic_cadaPre(listapessoas, listaApresentacao)
-    #df = pd.DataFrame(dic)
-    df2 = pd.DataFrame(dic2)
-    df2.to_excel("Python\ListaOrganizadaPalestras.xlsx", index=False)
+    df = pd.DataFrame(dic)
+    df.to_excel("Python\ListaNumeros.xlsx", index=False)
+    #df2 = pd.DataFrame(dic2)
+    #df2.to_excel("Python\ListaOrganizadaPalestras.xlsx", index=False)
     #df.to_excel("Python\ListaOrganizada.xlsx", index=False)
     
 
