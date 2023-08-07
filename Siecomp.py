@@ -18,7 +18,7 @@ class Pessoa:
     
 
 def cadastro(nome, matricula):
-    return Pessoa(nome, matricula)
+    return Pessoa(nome.title(), matricula)
 
 def percorreLista(tabela,listapessoas,listaApresentacao):
     for i in range(len(tabela)):
@@ -59,34 +59,51 @@ def somar(lista):
     for i in range(len(lista)):
         soma = 0
         for list in set(lista[i]):
-            if(list == "INTRODUÇÃO A METODOLOGIA PBL"):
-                soma+=9
-            elif(list == "SELEC * FROM ECOMP"):
+            if(list == "Quest"):
+                soma+=4
+            elif(list == "IEEE UEFS"):
                 soma+=2
-            elif(list == "CONHECENDO O RAMO ESTUDANTIL"):
-                soma+=2
-            elif(list == "O INTERCÂMBIO NA UEFS - O PAPEL DA AERI"):
+            elif(list == "Sistemas de Controle"):
                 soma+=1
-            elif(list == "INTRODUÇÃO AO LABORATÓRIO PARA CIRCUITOS ELÉTRICOS"):
-                soma+=5
-            elif(list == "TRAJETÓRIA DO ENGENHEIRO DE SOFTWARE"):
+            elif(list == "NAPP"):
+                soma+=2
+            elif(list == "Apresentação geral do curso de Engenharia de Computação"):
                 soma+=1
-            elif(list == "PALESTRA SOBRE ENADE"):
+            elif(list == "Introdução à metodologia PBL"):
+                soma+=8
+            elif(list == "Tenho uma ideia inovadora, O que fazer?"):
+                soma+=2
+            elif(list == "A trajetória do engenheiro de software"):
+                soma+1
+            elif(list == "Mesa redonda Sobre IA e o futuro"):
+                soma+=2
+            elif(list == "Operação Zamazenta"):
                 soma+=1
-            elif(list == "CURRICULARIZAÇÃO DA EXTENSÃO NO CURSO"):
+            elif(list == "Estágio não obrigatório versus Estágio Obrigatório"):
                 soma+=2
-            elif(list == "MATEMÁTICA & PROSA"):
+            elif(list == "Ras Apresenta: Introdução a circuitos digitais"):
+                soma+=4
+
+            elif(list == "Explicando todas as matérias do curso"):
                 soma+=2
-            elif(list == "MATEMÁTICA DISCRETAS E SUAS APLICAÇÕES"):
+            elif(list == "Alem da sala de aula: A importância das atividades complementares"):
                 soma+=2
-            elif(list == "ECOMPLICADO FAZER ECOMP?"):
-                soma+=2
-            elif(list == "EXPLICANDO TODAS AS MATÉRIAS DO CURSO"):
+            elif(list == "Como funciona a UEFS e o que voce tem a ver com isso?"):
+                soma+=1
+            elif(list == "AERI"):
+                soma+=1
+            
+            elif(list == "Carreira e Contratação em Computação"):
+                soma+=1.5
+            elif(list == "Curricularização da Extensão no Curso de Engenharia de Computação"):
+                soma+=1
+            elif(list == "ENADE Exame Nacional de Desempenho de Estudantes"):
+                soma+=1
+            elif(list == "Momento WIE"):
                 soma+=2
         if(soma > 20):
             soma = 20
-        if(soma == 4):
-            soma = 5
+
         listasoma.append(soma)
     return listasoma
 
@@ -106,14 +123,10 @@ def main():
     listapessoas = []
     tabela = pd.read_excel("Python\Lista.xlsx")
     percorreLista(tabela, listapessoas,listaApresentacao)
-    ##imprimeLista(listapessoas)
+    imprimeLista(listapessoas)
     dic = transformar(listapessoas)
-    dic2 = transformar_Dic_cadaPre(listapessoas, listaApresentacao)
     df = pd.DataFrame(dic)
-    df.to_excel("Python\ListaNumeros.xlsx", index=False)
-    #df2 = pd.DataFrame(dic2)
-    #df2.to_excel("Python\ListaOrganizadaPalestras.xlsx", index=False)
-    #df.to_excel("Python\ListaOrganizada.xlsx", index=False)
+    df.to_excel("Python\ListaCarga.xlsx", index=False)
     
 
 main()
